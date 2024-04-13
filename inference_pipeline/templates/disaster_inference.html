@@ -1,0 +1,41 @@
+<img src="{{ url_for('static', filename='download.png') }}" alt="My Image", width=150>
+<head>
+    <style>
+        input[name="text"] {
+            width: 1000px;
+            height: 25px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<h1>
+    Disaster text (tweet) classification: Inference Service
+</h1>
+Classify whether a text indicates an emergency due to a disaster.<br><br>
+LOW PROBABILITY : Indicates the input text is not related to any disaster event.<br>
+HIGH PROBABILITY: Indicates the input text could have been in reaction to a disaster event.<br><br>
+
+Example usage: If a group of tweets (geo-tagged) from a location have a higher mean probability, then it could act as a indicator
+of a disaster happening in that location.
+<h2>
+    Enter your text here:
+</h2>
+</body>
+<form method="POST">
+    <input name="text" placeholder="start typing here..." onfocus="if (this.placeholder === this.value) {this.value=''; this.style.color='black'}" style="color: grey;width: 500px; height: 100px;">
+    <input type="submit">
+</form>
+{% if text %}
+<p>Input text  : {{ text }}</p>
+{% endif %}
+{% if prob %}
+<p>Probability : {{ prob }}</p>
+{% endif %}
+
+
+<h3>
+    <p style="padding-left: 20px;"> <a href="/">Go to home</a></p>
+</h3>
+
+</html>
